@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import LanguageSwitcher, { type Lang } from "@/components/LanguageSwitcher";
+import { languageHref } from "@/lib/site";
 
-export type Lang = "en" | "de" | "es" | "fr";
+export type { Lang } from "@/components/LanguageSwitcher";
 const sourceUrl = "https://raw.githubusercontent.com/yodaluca23/Fusion-AltStore/refs/heads/main/source.json";
 
 const copy = {
@@ -85,16 +87,12 @@ function CopySource({ lang }: { lang: Lang }) {
 
 export default function FusionGuide({ initialLang }: { initialLang: Lang }) {
   const lang = initialLang;
-  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const t = guides[lang];
   const ids = ["needs", "altserver", "iphone", "source", "refresh", "xcode", "ipa", "sideload", "tv-refresh", "order", "trouble"];
   const links = ["https://faq.altstore.io/altstore-classic/how-to-install-altstore-macos", "https://faq.altstore.io/release-notes/altserver", "https://faq.altstore.io/altstore-classic/altserver", sourceUrl, "https://github.com/yodaluca23/Fusion-AltStore/releases"];
-  const languageOptions: Array<{ code: Lang; label: string }> = [{ code: "en", label: "English" }, { code: "de", label: "Deutsch" }, { code: "es", label: "Español" }, { code: "fr", label: "Français" }];
-  const languageMenuLabels: Record<Lang, string> = { en: "Choose language", de: "Sprache auswählen", es: "Elegir idioma", fr: "Choisir la langue" };
-  const languageHref = (code: Lang) => code === "en" ? "/guides/fusion/" : `/${code}/guides/fusion/`;
   return <main id="top">
-    <nav className="guide-nav" aria-label={guideLibraryLabels[lang]}><Link href="/">← {guideLibraryLabels[lang]}</Link><a href="https://github.com/berot3/ios-tvos-sideloading-guides">GitHub ↗</a></nav>
-    <header className="hero"><div className="hero-top"><div className="eyebrow">{t.eyebrow}</div><div className="language-switcher"><button className="language-trigger" aria-label={languageMenuLabels[lang]} aria-haspopup="menu" aria-expanded={languageMenuOpen} onClick={() => setLanguageMenuOpen((open) => !open)}><span aria-hidden="true">🌐</span> {languageOptions.find((option) => option.code === lang)?.label}<span className="language-chevron" aria-hidden="true">⌄</span></button>{languageMenuOpen ? <div className="language-options" role="menu" aria-label={languageMenuLabels[lang]}>{languageOptions.map((option) => <Link key={option.code} role="menuitemradio" aria-checked={option.code === lang} href={languageHref(option.code)} className={option.code === lang ? "active" : ""} onClick={() => setLanguageMenuOpen(false)}>{option.label}</Link>)}</div> : null}</div></div><h1>{t.title}</h1><p className="lead">{t.lead}</p><div className="hero-links"><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{t.releases}</a><a href="https://altstore.io/" target="_blank" rel="noreferrer">{t.altstore}</a></div></header>
+    <nav className="guide-nav" aria-label={guideLibraryLabels[lang]}><Link href={languageHref(lang, "hub")}>← {guideLibraryLabels[lang]}</Link><a href="https://github.com/berot3/ios-tvos-sideloading-guides">GitHub ↗</a></nav>
+    <header className="hero"><div className="hero-top"><div className="eyebrow">{t.eyebrow}</div><LanguageSwitcher lang={lang} route="fusion" detectLanguage={initialLang === "en"} /></div><h1>{t.title}</h1><p className="lead">{t.lead}</p><div className="hero-links"><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{t.releases}</a><a href="https://altstore.io/" target="_blank" rel="noreferrer">{t.altstore}</a></div></header>
     <Note><strong>{t.keyTitle}</strong><br />{t.keyText}</Note>
     <div className="start-here"><p>{t.startLabel}</p><div><a href="#iphone">{t.iphoneStart} <span>→</span></a><a href="#xcode">{t.appleTvStart} <span>→</span></a></div></div>
     <nav className="toc" aria-label={t.onPage}><div className="toc-title">{t.onPage}</div><div className="toc-grid">{t.toc.map((label, i) => <a key={label} href={`#${ids[i]}`}>{label}</a>)}</div></nav>
