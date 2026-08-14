@@ -2,13 +2,15 @@
 
 Multilingual, step-by-step guides for sideloading apps on **iPhone, iPad, and Apple TV** with AltStore Classic, AltStore PAL, AltServer, SideStore, Xcode, and related tools.
 
+**Website:** [berot3.github.io/ios-tvos-sideloading-guides](https://berot3.github.io/ios-tvos-sideloading-guides/)
+
 The goal is not merely to list download links. Each guide explains the complete installation path, the correct package for every platform, Apple signing limits, refresh requirements, and the most common failure cases.
 
 ## Available and planned guides
 
 | App | iPhone / iPad | Apple TV | Languages | Status |
 | --- | --- | --- | --- | --- |
-| [Fusion](https://fusion-altstore-guide.aylana77.chatgpt.site) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Existing guide; repository migration next |
+| [Fusion](https://berot3.github.io/ios-tvos-sideloading-guides/guides/fusion/) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Available |
 | Nuvio | Planned | Planned | Planned | Research pending |
 | More apps | Planned | When supported | Planned | Suggestions welcome |
 
@@ -43,22 +45,32 @@ Always verify that an IPA and its source are trustworthy before installing it. S
 
 ```text
 /
-├── fusion/
-├── nuvio/
-└── future-app/
+├── guides/fusion/
+├── de/guides/fusion/
+├── es/guides/fusion/
+├── fr/guides/fusion/
+└── guides/future-app/
 ```
 
 Shared layout, navigation, language handling, checklists, warnings, copy controls, and troubleshooting components will be reused across every guide. App-specific instructions and translations will remain separated so one guide can be updated without rewriting the others.
 
 ## Roadmap
 
-1. Import and preserve the reviewed Fusion guide.
-2. Convert the current single-guide implementation into a reusable guide system.
-3. Add a searchable guide overview and app-specific routes.
-4. Add per-guide SEO metadata, source dates, platform labels, and installation-channel labels.
-5. Add automated build, link, accessibility, and content checks.
-6. Research and publish the Nuvio guide.
-7. Add further iOS and tvOS apps when there is a real documentation gap.
+1. Research and publish the Nuvio guide.
+2. Add a searchable guide overview when the library grows.
+3. Add link and accessibility checks to the existing build validation.
+4. Add further iOS and tvOS apps when there is a real documentation gap.
+
+## Development and publishing
+
+The site is a standard Next.js project configured for a fully static export. To validate a change locally:
+
+```bash
+npm ci
+npm run check
+```
+
+Every pull request runs linting, type-checking, the production build, and exported-route tests. A successful push to `master` publishes the generated `out/` directory through GitHub Actions and GitHub Pages. Generated site files are not committed to the repository.
 
 ## Contributing
 

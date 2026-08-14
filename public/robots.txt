@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://berot3.github.io/ios-tvos-sideloading-guides/sitemap.xml
