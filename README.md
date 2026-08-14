@@ -1,6 +1,6 @@
 # iOS & tvOS Sideloading Guides
 
-Multilingual, step-by-step guides for sideloading apps on **iPhone, iPad, and Apple TV** with AltStore Classic, AltServer, SideStore, Xcode, and related tools.
+Multilingual, step-by-step guides for sideloading apps on **iPhone, iPad, and Apple TV** with AltStore Classic, AltStore PAL, AltServer, SideStore, Xcode, and related tools.
 
 The goal is not merely to list download links. Each guide explains the complete installation path, the correct package for every platform, Apple signing limits, refresh requirements, and the most common failure cases.
 
@@ -16,6 +16,7 @@ The goal is not merely to list download links. Each guide explains the complete 
 
 - verified upstream download and release links
 - clear distinction between iOS/iPadOS and tvOS packages
+- the correct distribution path, including AltStore Classic, AltStore PAL, SideStore, or direct AltServer installation
 - prerequisites and an interactive checklist
 - numbered installation steps
 - free Apple developer account limitations
@@ -54,7 +55,7 @@ Shared layout, navigation, language handling, checklists, warnings, copy control
 1. Import and preserve the reviewed Fusion guide.
 2. Convert the current single-guide implementation into a reusable guide system.
 3. Add a searchable guide overview and app-specific routes.
-4. Add per-guide SEO metadata, source dates, and platform labels.
+4. Add per-guide SEO metadata, source dates, platform labels, and installation-channel labels.
 5. Add automated build, link, accessibility, and content checks.
 6. Research and publish the Nuvio guide.
 7. Add further iOS and tvOS apps when there is a real documentation gap.
@@ -66,7 +67,7 @@ Corrections are welcome, especially when an upstream release changes:
 - supported operating-system versions
 - IPA filenames
 - installation or signing behavior
-- AltStore, AltServer, SideStore, or Xcode requirements
+- AltStore Classic, AltStore PAL, AltServer, SideStore, or Xcode requirements
 
 Please include a primary source such as the app's official repository, release page, or official documentation.
 
