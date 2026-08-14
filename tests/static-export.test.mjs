@@ -4,9 +4,12 @@ import test from "node:test";
 
 const readExport = (path) => readFile(new URL(`../out/${path}`, import.meta.url), "utf8");
 
-test("exports the hub and all Fusion language routes", async () => {
+test("exports the hub and Fusion guide in every supported language", async () => {
   const pages = await Promise.all([
     readExport("index.html"),
+    readExport("de/index.html"),
+    readExport("es/index.html"),
+    readExport("fr/index.html"),
     readExport("guides/fusion/index.html"),
     readExport("de/guides/fusion/index.html"),
     readExport("es/guides/fusion/index.html"),
@@ -14,10 +17,13 @@ test("exports the hub and all Fusion language routes", async () => {
   ]);
 
   assert.match(pages[0], /iOS &amp; tvOS/);
-  assert.match(pages[1], /Install Fusion on iPhone/);
-  assert.match(pages[2], /Fusion auf iPhone/);
-  assert.match(pages[3], /Instala Fusion en el iPhone/);
-  assert.match(pages[4], /Installer Fusion sur iPhone/);
+  assert.match(pages[1], /Sideloading-Anleitungen/);
+  assert.match(pages[2], /Guías de sideloading/);
+  assert.match(pages[3], /Guides de sideloading/);
+  assert.match(pages[4], /Install Fusion on iPhone/);
+  assert.match(pages[5], /Fusion auf iPhone/);
+  assert.match(pages[6], /Instala Fusion en el iPhone/);
+  assert.match(pages[7], /Installer Fusion sur iPhone/);
 });
 
 test("uses correct document languages and GitHub Pages asset paths", async () => {
@@ -30,13 +36,19 @@ test("uses correct document languages and GitHub Pages asset paths", async () =>
   assert.match(english, /\/ios-tvos-sideloading-guides\/favicon\.svg/);
 });
 
-test("includes browser-language detection and an explicit-language preference", async () => {
-  const guideSource = await readFile(new URL("../components/FusionGuide.tsx", import.meta.url), "utf8");
+test("shares browser-language detection and explicit preferences across hub and guide", async () => {
+  const [switcherSource, hubSource, guideSource] = await Promise.all([
+    readFile(new URL("../components/LanguageSwitcher.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../components/GuideHub.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../components/FusionGuide.tsx", import.meta.url), "utf8"),
+  ]);
 
-  assert.match(guideSource, /ios-tvos-sideloading-guides-language/);
-  assert.match(guideSource, /navigator\.languages/);
-  assert.match(guideSource, /window\.location\.replace/);
-  assert.match(guideSource, /window\.localStorage\.setItem/);
+  assert.match(switcherSource, /ios-tvos-sideloading-guides-language/);
+  assert.match(switcherSource, /navigator\.languages/);
+  assert.match(switcherSource, /window\.location\.replace/);
+  assert.match(switcherSource, /window\.localStorage\.setItem/);
+  assert.match(hubSource, /route="hub"/);
+  assert.match(guideSource, /route="fusion"/);
 });
 
 test("exports discovery files without the former ChatGPT guide URL", async () => {
