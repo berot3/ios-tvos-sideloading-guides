@@ -71,14 +71,6 @@ Corrections are welcome, especially when an upstream release changes:
 
 Please include a primary source such as the app's official repository, release page, or official documentation.
 
-## Current Fusion sources
-
-- [Fusion-AltStore repository](https://github.com/yodaluca23/Fusion-AltStore)
-- [Fusion releases](https://github.com/yodaluca23/Fusion-AltStore/releases)
-- [Fusion AltStore source](https://raw.githubusercontent.com/yodaluca23/Fusion-AltStore/refs/heads/main/source.json)
-- [AltStore documentation](https://faq.altstore.io/)
-- [AltServer release notes](https://faq.altstore.io/release-notes/altserver)
-
 ## License
 
 No project license has been selected yet. Until one is added, normal copyright rules apply.
