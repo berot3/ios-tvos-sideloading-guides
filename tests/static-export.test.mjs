@@ -30,6 +30,15 @@ test("uses correct document languages and GitHub Pages asset paths", async () =>
   assert.match(english, /\/ios-tvos-sideloading-guides\/favicon\.svg/);
 });
 
+test("includes browser-language detection and an explicit-language preference", async () => {
+  const guideSource = await readFile(new URL("../components/FusionGuide.tsx", import.meta.url), "utf8");
+
+  assert.match(guideSource, /ios-tvos-sideloading-guides-language/);
+  assert.match(guideSource, /navigator\.languages/);
+  assert.match(guideSource, /window\.location\.replace/);
+  assert.match(guideSource, /window\.localStorage\.setItem/);
+});
+
 test("exports discovery files without the former ChatGPT guide URL", async () => {
   const [hub, sitemap, robots] = await Promise.all([
     readExport("index.html"),
