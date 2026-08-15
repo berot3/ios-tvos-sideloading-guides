@@ -11,7 +11,7 @@ The goal is not merely to list download links. Each guide explains the complete 
 | App | iPhone / iPad | Apple TV | Languages | Status |
 | --- | --- | --- | --- | --- |
 | [Fusion](https://berot3.github.io/ios-tvos-sideloading-guides/guides/fusion/) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Available |
-| Nuvio | Planned | Planned | Planned | Research pending |
+| [Nuvio](https://berot3.github.io/ios-tvos-sideloading-guides/guides/nuvio/) | SideStore / Sideloadly | Unofficial community beta | EN, DE, ES, FR | Available |
 | More apps | Planned | When supported | Planned | Suggestions welcome |
 
 ## What each guide should include
@@ -46,9 +46,13 @@ Always verify that an IPA and its source are trustworthy before installing it. S
 ```text
 /
 ├── guides/fusion/
+├── guides/nuvio/
 ├── de/guides/fusion/
+├── de/guides/nuvio/
 ├── es/guides/fusion/
+├── es/guides/nuvio/
 ├── fr/guides/fusion/
+├── fr/guides/nuvio/
 └── guides/future-app/
 ```
 
@@ -56,7 +60,7 @@ Shared layout, navigation, language handling, checklists, warnings, copy control
 
 ## Roadmap
 
-1. Research and publish the Nuvio guide.
+1. Keep Fusion and Nuvio package links, requirements, and signing behavior current.
 2. Add a searchable guide overview when the library grows.
 3. Add link and accessibility checks to the existing build validation.
 4. Add further iOS and tvOS apps when there is a real documentation gap.

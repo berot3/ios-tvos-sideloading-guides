@@ -6,11 +6,12 @@ export const siteUrl = `${siteOrigin}${siteBasePath}`;
 export const languages = ["de", "es", "fr"] as const;
 export type TranslatedLanguage = (typeof languages)[number];
 export type SupportedLanguage = "en" | TranslatedLanguage;
-export type LanguageRoute = "hub" | "fusion";
+export type LanguageRoute = "hub" | "fusion" | "nuvio";
 
 export function languageHref(code: SupportedLanguage, route: LanguageRoute) {
   const prefix = code === "en" ? "" : `/${code}`;
-  return route === "hub" ? `${prefix}/` : `${prefix}/guides/fusion/`;
+  if (route === "hub") return `${prefix}/`;
+  return `${prefix}/guides/${route}/`;
 }
 
 export const hubLanguageUrls = {
@@ -27,4 +28,12 @@ export const fusionLanguageUrls = {
   de: `${siteUrl}/de/guides/fusion/`,
   es: `${siteUrl}/es/guides/fusion/`,
   fr: `${siteUrl}/fr/guides/fusion/`,
+};
+
+export const nuvioLanguageUrls = {
+  "x-default": `${siteUrl}/guides/nuvio/`,
+  en: `${siteUrl}/guides/nuvio/`,
+  de: `${siteUrl}/de/guides/nuvio/`,
+  es: `${siteUrl}/es/guides/nuvio/`,
+  fr: `${siteUrl}/fr/guides/nuvio/`,
 };

@@ -140,7 +140,7 @@ code{background:#273747;color:#f1f6fb}
 .button-link.secondary{background:var(--paper);color:var(--blue);border:1px solid var(--line)}
 .guide-overview{border-top:1px solid var(--line);padding-top:42px}
 .guide-overview h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.04em;margin:8px 0 22px}
-.guide-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.8fr);gap:18px}
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
 .guide-card{display:flex;flex-direction:column;min-height:280px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px #1c40620d}
 .guide-card h3{font-size:1.65rem;letter-spacing:-.03em;margin:12px 0 8px}
 .guide-card p{color:var(--muted);margin:0 0 22px}
