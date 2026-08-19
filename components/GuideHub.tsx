@@ -18,15 +18,15 @@ const hubCopy = {
 } as const;
 
 const fusionProvenance = {
-  en: { badge: "Unofficial community IPA repository", title: "IPA provenance notice:", text: "The repository is unofficial. Its maintainer says it republishes IPAs shared by Fusion developer Exate in the official Discord; matching checksums against the original Discord files is still pending." },
-  de: { badge: "Inoffizielles Community-IPA-Repository", title: "Hinweis zur IPA-Herkunft:", text: "Das Repository ist inoffiziell. Laut Maintainer veröffentlicht es IPAs, die Fusion-Entwickler Exate im offiziellen Discord geteilt hat; der Prüfsummenabgleich mit den ursprünglichen Discord-Dateien steht noch aus." },
-  es: { badge: "Repositorio IPA comunitario no oficial", title: "Aviso sobre el origen del IPA:", text: "El repositorio no es oficial. Su responsable afirma que republica los IPA compartidos por el desarrollador Exate en el Discord oficial; aún falta comparar sus sumas de comprobación con los archivos originales." },
-  fr: { badge: "Dépôt IPA communautaire non officiel", title: "Avertissement sur l’origine de l’IPA :", text: "Le dépôt n’est pas officiel. Son responsable affirme republier les IPA partagés par le développeur Exate sur le Discord officiel ; la comparaison des sommes de contrôle avec les fichiers d’origine reste à faire." },
+  en: "Unofficial community IPA repository",
+  de: "Inoffizielles Community-IPA-Repository",
+  es: "Repositorio IPA comunitario no oficial",
+  fr: "Dépôt IPA communautaire non officiel",
 } as const;
 
 export default function GuideHub({ initialLang, detectLanguage = false }: { initialLang: Lang; detectLanguage?: boolean }) {
   const t = hubCopy[initialLang];
-  const fusionSource = fusionProvenance[initialLang];
+  const fusionProvenanceBadge = fusionProvenance[initialLang];
   const fusionHref = languageHref(initialLang, "fusion");
   const nuvioHref = languageHref(initialLang, "nuvio");
 
@@ -41,7 +41,7 @@ export default function GuideHub({ initialLang, detectLanguage = false }: { init
     <section className="guide-overview" aria-labelledby="guides-title">
       <div className="section-kicker">{t.library}</div><h2 id="guides-title">{t.available}</h2>
       <div className="guide-grid">
-        <article className="guide-card"><div className="badge-row"><span className="badge badge-warning">{fusionSource.badge}</span><span className="badge">iPhone / iPad</span><span className="badge">Apple TV</span><span className="badge">EN · DE · ES · FR</span></div><h3>Fusion</h3><p>{t.fusionDescription}</p><div className="provenance-card-note"><strong>{fusionSource.title}</strong> {fusionSource.text}</div><Link className="button-link" href={fusionHref}>{t.read}</Link></article>
+        <article className="guide-card"><div className="badge-row"><span className="badge badge-warning">{fusionProvenanceBadge}</span><span className="badge">iPhone / iPad</span><span className="badge">Apple TV</span><span className="badge">EN · DE · ES · FR</span></div><h3>Fusion</h3><p>{t.fusionDescription}</p><Link className="button-link" href={fusionHref}>{t.read}</Link></article>
         <article className="guide-card"><div className="badge-row"><span className="badge">iPhone / iPad</span><span className="badge">Apple TV · Community</span><span className="badge">EN · DE · ES · FR</span></div><h3>Nuvio</h3><p>{t.nuvioDescription}</p><Link className="button-link" href={nuvioHref}>{t.read}</Link></article>
         <article className="guide-card planned"><div className="badge-row"><span className="badge">{t.planned}</span></div><h3>{t.futureTitle}</h3><p>{t.futureDescription}</p><a className="button-link secondary" href="https://github.com/berot3/ios-tvos-sideloading-guides/issues">{t.suggest}</a></article>
       </div>
