@@ -74,6 +74,22 @@ test("publishes Nuvio provenance and update distinctions", async () => {
   assert.match(german, /App-Updates sind keine Signatur-Refreshes/);
 });
 
+test("publishes Fusion's unofficial repository status prominently", async () => {
+  const [englishHub, germanHub, englishGuide, germanGuide] = await Promise.all([
+    readExport("index.html"),
+    readExport("de/index.html"),
+    readExport("guides/fusion/index.html"),
+    readExport("de/guides/fusion/index.html"),
+  ]);
+
+  assert.match(englishHub, /Unofficial community IPA repository/);
+  assert.match(germanHub, /Inoffizielles Community-IPA-Repository/);
+  assert.match(englishGuide, /repository is not official/);
+  assert.match(englishGuide, /shared by Fusion developer Exate in the official Discord/);
+  assert.match(germanGuide, /Repository nicht offiziell/);
+  assert.match(germanGuide, /Exate im offiziellen Discord geteilt/);
+});
+
 test("exports discovery files without the former ChatGPT guide URL", async () => {
   const [hub, sitemap, robots] = await Promise.all([
     readExport("index.html"),
