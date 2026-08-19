@@ -10,7 +10,7 @@ The goal is not merely to list download links. Each guide explains the complete 
 
 | App | iPhone / iPad | Apple TV | Languages | Status |
 | --- | --- | --- | --- | --- |
-| [Fusion](https://berot3.github.io/ios-tvos-sideloading-guides/guides/fusion/) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Available |
+| [Fusion](https://berot3.github.io/ios-tvos-sideloading-guides/guides/fusion/) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Available — unofficial community IPA repository |
 | [Nuvio](https://berot3.github.io/ios-tvos-sideloading-guides/guides/nuvio/) | SideStore / Sideloadly | Unofficial community beta | EN, DE, ES, FR | Available |
 | More apps | Planned | When supported | Planned | Suggestions welcome |
 
@@ -30,6 +30,9 @@ The goal is not merely to list download links. Each guide explains the complete 
 - multilingual content where reliable translations are available
 
 ## Safety and scope
+
+> [!WARNING]
+> **Fusion IPA provenance:** The linked repository `yodaluca23/Fusion-AltStore` is explicitly unofficial. Its maintainer states that it republishes the IPA files shared by Fusion developer Exate in the official Fusion Discord. The GitHub release checksums have not yet been matched against the original Discord attachments.
 
 This project:
 

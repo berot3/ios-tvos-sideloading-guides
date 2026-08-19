@@ -8,6 +8,53 @@ import { languageHref } from "@/lib/site";
 export type { Lang } from "@/components/LanguageSwitcher";
 const sourceUrl = "https://raw.githubusercontent.com/yodaluca23/Fusion-AltStore/refs/heads/main/source.json";
 
+const provenanceCopy = {
+  en: {
+    label: "IPA PROVENANCE · UNOFFICIAL COMMUNITY REPOSITORY",
+    title: "Unofficial distribution — reportedly using developer-shared Discord files",
+    text: <>The linked iOS and tvOS IPAs are hosted in <a href="https://github.com/yodaluca23/Fusion-AltStore" target="_blank" rel="noreferrer">yodaluca23/Fusion-AltStore ↗</a>. Its maintainer explicitly says the repository is not official and that it republishes IPAs shared by Fusion developer Exate in the official Discord. We have not yet matched the GitHub release checksums against the original Discord attachments.</>,
+    releaseLink: "Community IPA releases ↗",
+    packages: "The linked community repository provides two separate packages:",
+    sourceIntro: "If you accept this unofficial distribution path, open AltStore Classic and add the community-hosted source:",
+    releaseIntro: <>If you accept this unofficial distribution path, download the Apple TV build from the <a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">community-hosted Fusion-AltStore releases page ↗</a>.</>,
+    sourceLinks: ["AltStore: macOS installation", "AltServer documentation / release notes", "AltStore Classic documentation", "Community-hosted Fusion-AltStore source.json", "Community-hosted IPA releases on GitHub"],
+    reviewed: "Provenance reviewed on 19 August 2026. The repository is unofficial; its maintainer says it republishes IPAs shared by Exate in the official Discord. Checksum matching remains pending.",
+  },
+  de: {
+    label: "IPA-HERKUNFT · INOFFIZIELLES COMMUNITY-REPOSITORY",
+    title: "Inoffizielle Distribution — laut Maintainer mit Entwicklerdateien aus Discord",
+    text: <>Die verlinkten iOS- und tvOS-IPAs liegen in <a href="https://github.com/yodaluca23/Fusion-AltStore" target="_blank" rel="noreferrer">yodaluca23/Fusion-AltStore ↗</a>. Dessen Maintainer erklärt ausdrücklich, dass das Repository nicht offiziell ist und IPAs weiterveröffentlicht, die Fusion-Entwickler Exate im offiziellen Discord geteilt hat. Die GitHub-Prüfsummen wurden noch nicht mit den ursprünglichen Discord-Anhängen abgeglichen.</>,
+    releaseLink: "Community-IPA-Releases ↗",
+    packages: "Das verlinkte Community-Repository stellt zwei getrennte Pakete bereit:",
+    sourceIntro: "Wenn du diesen inoffiziellen Distributionsweg akzeptierst, öffne AltStore Classic und füge die community-gehostete Quelle hinzu:",
+    releaseIntro: <>Wenn du diesen inoffiziellen Distributionsweg akzeptierst, lade die Apple-TV-Version von der <a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">community-gehosteten Fusion-AltStore-Releases-Seite ↗</a>.</>,
+    sourceLinks: ["AltStore: macOS-Installation", "AltServer-Dokumentation / Release Notes", "AltStore-Classic-Dokumentation", "Community-gehostete Fusion-AltStore-Quelle (source.json)", "Community-gehostete IPA-Releases auf GitHub"],
+    reviewed: "Herkunft am 19. August 2026 geprüft. Das Repository ist inoffiziell; laut Maintainer veröffentlicht es von Exate im offiziellen Discord geteilte IPAs. Der Prüfsummenabgleich steht noch aus.",
+  },
+  es: {
+    label: "ORIGEN DEL IPA · REPOSITORIO COMUNITARIO NO OFICIAL",
+    title: "Distribución no oficial — según su responsable usa archivos compartidos por el desarrollador en Discord",
+    text: <>Los IPA enlazados para iOS y tvOS están alojados en <a href="https://github.com/yodaluca23/Fusion-AltStore" target="_blank" rel="noreferrer">yodaluca23/Fusion-AltStore ↗</a>. Su responsable afirma expresamente que el repositorio no es oficial y que republica los IPA compartidos por el desarrollador Exate en el Discord oficial. Aún no hemos comparado las sumas de comprobación con los adjuntos originales de Discord.</>,
+    releaseLink: "Versiones IPA comunitarias ↗",
+    packages: "El repositorio comunitario enlazado ofrece dos paquetes distintos:",
+    sourceIntro: "Si aceptas esta vía de distribución no oficial, abre AltStore Classic y añade la fuente alojada por la comunidad:",
+    releaseIntro: <>Si aceptas esta vía de distribución no oficial, descarga la versión para Apple TV desde la <a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">página comunitaria de versiones de Fusion-AltStore ↗</a>.</>,
+    sourceLinks: ["AltStore: instalación en macOS", "Documentación / notas de versión de AltServer", "Documentación de AltStore Classic", "source.json comunitario de Fusion-AltStore", "Versiones IPA comunitarias en GitHub"],
+    reviewed: "Procedencia revisada el 19 de agosto de 2026. El repositorio no es oficial; su responsable afirma que republica los IPA compartidos por Exate en el Discord oficial. Falta comparar las sumas de comprobación.",
+  },
+  fr: {
+    label: "ORIGINE DE L’IPA · DÉPÔT COMMUNAUTAIRE NON OFFICIEL",
+    title: "Distribution non officielle — utiliserait des fichiers partagés par le développeur sur Discord",
+    text: <>Les IPA iOS et tvOS liés sont hébergés dans <a href="https://github.com/yodaluca23/Fusion-AltStore" target="_blank" rel="noreferrer">yodaluca23/Fusion-AltStore ↗</a>. Son responsable indique explicitement que le dépôt n’est pas officiel et qu’il republie les IPA partagés par le développeur Exate sur le Discord officiel. Nous n’avons pas encore comparé les sommes de contrôle avec les pièces jointes Discord d’origine.</>,
+    releaseLink: "Versions IPA communautaires ↗",
+    packages: "Le dépôt communautaire lié fournit deux paquets distincts :",
+    sourceIntro: "Si tu acceptes cette voie de distribution non officielle, ouvre AltStore Classic et ajoute la source hébergée par la communauté :",
+    releaseIntro: <>Si tu acceptes cette voie de distribution non officielle, télécharge la version Apple TV depuis la <a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">page communautaire des versions Fusion-AltStore ↗</a>.</>,
+    sourceLinks: ["AltStore : installation macOS", "Documentation / notes de version d’AltServer", "Documentation d’AltStore Classic", "source.json communautaire de Fusion-AltStore", "Versions IPA communautaires sur GitHub"],
+    reviewed: "Provenance vérifiée le 19 août 2026. Le dépôt n’est pas officiel ; son responsable affirme republier les IPA partagés par Exate sur le Discord officiel. La comparaison des sommes de contrôle reste à faire.",
+  },
+} as const;
+
 const copy = {
   en: {
     eyebrow: "FUSION · INSTALLATION GUIDE", title: <>Install Fusion on iPhone<br />and Apple TV.</>, lead: "A complete step-by-step guide using AltStore Classic, AltServer, and Xcode.", releases: "Fusion Releases ↗", altstore: "AltStore ↗", keyTitle: "The important distinction", keyText: <>Use <strong>AltStore Classic</strong> on the iPhone — not AltStore PAL. Do not install AltStore on the Apple TV. The Apple TV version of Fusion is installed directly from the Mac using AltServer.</>, startLabel: "Start with your device", iphoneStart: "Set up iPhone", appleTvStart: "Set up Apple TV", backToTop: "Back to top ↑", onPage: "On this page",
@@ -88,25 +135,26 @@ function CopySource({ lang }: { lang: Lang }) {
 export default function FusionGuide({ initialLang }: { initialLang: Lang }) {
   const lang = initialLang;
   const t = guides[lang];
+  const provenance = provenanceCopy[lang];
   const ids = ["needs", "altserver", "iphone", "source", "refresh", "xcode", "ipa", "sideload", "tv-refresh", "order", "trouble"];
   const links = ["https://faq.altstore.io/altstore-classic/how-to-install-altstore-macos", "https://faq.altstore.io/release-notes/altserver", "https://faq.altstore.io/altstore-classic/altserver", sourceUrl, "https://github.com/yodaluca23/Fusion-AltStore/releases"];
   return <main id="top">
     <nav className="guide-nav" aria-label={guideLibraryLabels[lang]}><Link href={languageHref(lang, "hub")}>← {guideLibraryLabels[lang]}</Link><a href="https://github.com/berot3/ios-tvos-sideloading-guides">GitHub ↗</a></nav>
-    <header className="hero"><div className="hero-top"><div className="eyebrow">{t.eyebrow}</div><LanguageSwitcher lang={lang} route="fusion" detectLanguage={initialLang === "en"} /></div><h1>{t.title}</h1><p className="lead">{t.lead}</p><div className="hero-links"><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{t.releases}</a><a href="https://altstore.io/" target="_blank" rel="noreferrer">{t.altstore}</a></div></header>
+    <header className="hero"><div className="hero-top"><div className="eyebrow">{t.eyebrow}</div><LanguageSwitcher lang={lang} route="fusion" detectLanguage={initialLang === "en"} /></div><h1>{t.title}</h1><p className="lead">{t.lead}</p><div className="provenance-banner" role="note"><span>{provenance.label}</span><strong>{provenance.title}</strong><p>{provenance.text}</p></div><div className="hero-links"><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{provenance.releaseLink}</a><a href="https://altstore.io/" target="_blank" rel="noreferrer">{t.altstore}</a></div></header>
     <Note><strong>{t.keyTitle}</strong><br />{t.keyText}</Note>
     <div className="start-here"><p>{t.startLabel}</p><div><a href="#iphone">{t.iphoneStart} <span>→</span></a><a href="#xcode">{t.appleTvStart} <span>→</span></a></div></div>
     <nav className="toc" aria-label={t.onPage}><div className="toc-title">{t.onPage}</div><div className="toc-grid">{t.toc.map((label, i) => <a key={label} href={`#${ids[i]}`}>{label}</a>)}</div></nav>
-    <Section id="needs" number="01" title={t.sections[0]}><div className="card"><Checklist items={t.needItems} /></div><p>{t.packages}</p><div className="ipa-grid"><div><span>{t.iphone}</span><code>Fusion-unsigned-ios.ipa</code></div><div><span>{t.appleTv}</span><code>Fusion-tvos-unsigned.ipa</code></div></div></Section>
+    <Section id="needs" number="01" title={t.sections[0]}><div className="card"><Checklist items={t.needItems} /></div><p>{provenance.packages}</p><div className="ipa-grid"><div><span>{t.iphone}</span><code>Fusion-unsigned-ios.ipa</code></div><div><span>{t.appleTv}</span><code>Fusion-tvos-unsigned.ipa</code></div></div></Section>
     <Section id="altserver" number="02" title={t.sections[1]}><ol>{t.altSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol><p className="source-line">{t.officialSite}</p></Section>
     <Section id="iphone" number="03" title={t.sections[2]}><div className="flow">{t.flow}</div><ol>{t.iphoneSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol><h3>{t.trustTitle}</h3><p>{t.trustText}</p><h3>{t.devTitle}</h3><p>{t.devText}</p><ol>{t.devSteps.map(x => <li key={x}><span>{x}</span></li>)}</ol></Section>
-    <Section id="source" number="04" title={t.sections[3]}><p>{t.sourceIntro}</p><CopySource lang={lang} /><ol>{t.sourceSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol><Note warning><strong>{t.important}</strong> {t.sourceWarning}</Note></Section>
+    <Section id="source" number="04" title={t.sections[3]}><p>{provenance.sourceIntro}</p><CopySource lang={lang} /><ol>{t.sourceSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol><Note warning><strong>{t.important}</strong> {t.sourceWarning}</Note></Section>
     <Section id="refresh" number="05" title={t.sections[4]}><p>{t.refreshText}</p><div className="refresh-requirements"><p>{t.refreshLabel}</p><ul>{t.refreshItems.map(x => <li key={x}>{x}</li>)}</ul></div><p>{t.refreshEnd}</p></Section>
     <Section id="xcode" number="06" title={t.sections[5]}><p>{t.pairingIntro}</p><ol>{t.pairingSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol><Note>{t.noAltStore}</Note></Section>
-    <Section id="ipa" number="07" title={t.sections[6]}><p>{t.releaseIntro}</p><div className="download"><div><span>{t.forAppleTv}</span><code>Fusion-tvos-unsigned.ipa</code></div><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{t.download}</a></div><Note warning>{t.wrongIpa}</Note></Section>
+    <Section id="ipa" number="07" title={t.sections[6]}><p>{provenance.releaseIntro}</p><div className="download"><div><span>{t.forAppleTv}</span><code>Fusion-tvos-unsigned.ipa</code></div><a href="https://github.com/yodaluca23/Fusion-AltStore/releases" target="_blank" rel="noreferrer">{t.download}</a></div><Note warning>{t.wrongIpa}</Note></Section>
     <Section id="sideload" number="08" title={t.sections[7]}><ol>{t.sideloadSteps.map((x, i) => <li key={i}><span>{x}</span></li>)}</ol></Section>
     <Section id="tv-refresh" number="09" title={t.sections[8]}><p>{t.sevenTv}</p><p><strong>{t.noAuto}</strong></p><p>{t.repeat}</p><div className="flow compact">AltServer → Option (⌥) → Sideload .ipa… → Fusion-tvos-unsigned.ipa → Apple TV</div><p>{t.repeatEnd}</p></Section>
     <Section id="order" number="10" title={t.sections[9]}><div className="timeline">{t.orderItems.map(([device, action], i) => <div className="timeline-row" key={action}><b>{String(i + 1).padStart(2, "0")}</b><span className="device">{device}</span><span>{action}</span></div>)}</div></Section>
     <Section id="trouble" number="11" title={t.sections[10]}><div className="trouble-grid">{t.trouble.map(item => <div key={item.title}><h3>{item.title}</h3>{"text" in item && item.text ? <p>{item.text}</p> : null}<ul className="trouble-list">{item.items.map(x => <li key={x}>{x}</li>)}</ul></div>)}</div></Section>
-    <footer><div className="section-kicker">12 · {t.sourcesTitle.toUpperCase()}</div><h2>{t.sourcesTitle}</h2><ul>{t.sourceLinks.map((label, i) => <li key={label}><a href={links[i]} target="_blank" rel="noreferrer">{label} ↗</a></li>)}</ul><p><a href="https://github.com/berot3/ios-tvos-sideloading-guides/blob/master/guides/fusion/SOURCES.md">{verificationLabels[lang]} ↗</a></p><p className="small">{t.reviewed}</p><a className="back-to-top" href="#top">{t.backToTop}</a></footer>
+    <footer><div className="section-kicker">12 · {t.sourcesTitle.toUpperCase()}</div><h2>{t.sourcesTitle}</h2><ul>{provenance.sourceLinks.map((label, i) => <li key={label}><a href={links[i]} target="_blank" rel="noreferrer">{label} ↗</a></li>)}</ul><p><a href="https://github.com/berot3/ios-tvos-sideloading-guides/blob/master/guides/fusion/SOURCES.md">{verificationLabels[lang]} ↗</a></p><p className="small">{provenance.reviewed}</p><a className="back-to-top" href="#top">{t.backToTop}</a></footer>
   </main>;
 }
