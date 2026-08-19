@@ -153,8 +153,6 @@ code{background:#273747;color:#f1f6fb}
 .badge-row{display:flex;flex-wrap:wrap;gap:7px}
 .badge{display:inline-flex;border-radius:999px;padding:5px 9px;background:var(--soft);color:var(--blue);font-size:.74rem;font-weight:800;letter-spacing:.04em}
 .badge-warning{background:var(--yellow);color:var(--ink);border:1px solid var(--yellow-line)}
-.provenance-card-note{margin:0 0 22px;padding:12px 14px;background:var(--yellow);border:1px solid var(--yellow-line);border-radius:12px;color:var(--ink);font-size:.86rem;line-height:1.45}
-.provenance-card-note strong{display:block;margin-bottom:3px}
 .hub-note{margin-top:34px;padding:21px 24px;background:var(--paper);border:1px solid var(--line);border-radius:18px}
 .hub-note h2{font-size:1.25rem;margin:0 0 8px}
 .hub-note p{color:var(--muted);margin:0}
