@@ -1,6 +1,6 @@
 # Sideloading method validation
 
-Last updated: **15 August 2026**
+Last updated: **22 August 2026**
 
 This document is the durable evidence and device-test record for shared iOS, iPadOS, and tvOS sideloading workflows. The corresponding GitHub issue tracks remaining work. App guides must not promote an untested method as the default merely because the tool claims generic IPA support.
 
@@ -47,6 +47,12 @@ No row is marked **VERIFIED** yet. Existing published guides were source-checked
 | Nuvio | Apple TV | Sideloadly | Primary + project docs checked | Not recorded | Not recorded | Not recorded | RESEARCHED | Confirm pairing, launch, Top Shelf limitation, and free manual reinstall. |
 | Nuvio | Apple TV | atvloadly | Generic tvOS support only | Not recorded | Not recorded | Not recorded | ADVANCED · NEEDS DEVICE TEST | Confirm the community beta tolerates bundle-ID rewriting and automatic refresh. |
 | Nuvio | iOS / tvOS | FlareStore | Provider docs checked | Not recorded | Not recorded | Not recorded | NEEDS DEVICE TEST · PAID | Confirm IPA compatibility and beta Apple TV installation. |
+| Debrify | iPhone / iPad | AltStore Classic | Official IPA and release workflow checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL · NEEDS DEVICE TEST | Confirm v0.8 alpha installs, retains credentials during updates, and refreshes without breaking Keychain data. |
+| Debrify | iPhone / iPad | SideStore | Official IPA and release workflow checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL · NEEDS DEVICE TEST | Confirm framework signing, update-over-existing, background refresh, and data retention. |
+| Debrify | iPhone / iPad | Sideloadly | Official IPA and generic tool support checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL · NEEDS DEVICE TEST | Confirm direct install, daemon refresh, and preservation of the original bundle identifier. |
+| Debrify | Apple TV | AltServer + Xcode | Official tvOS IPA checked; generic method docs only | Not recorded | Not recorded | Not recorded | EXPERIMENTAL · NEEDS DEVICE TEST | Confirm signing, installation, Top Shelf, remote focus, playback, and seven-day reinstallation. |
+| Debrify | Apple TV | Sideloadly | Official tvOS IPA and generic tool support checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL · NEEDS DEVICE TEST | Confirm installation, multichannel audio, update-over-existing, and free versus paid refresh behavior. |
+| Debrify | Apple TV | atvloadly | Official tvOS IPA checked; generic tool support only | Not recorded | Not recorded | Not recorded | ADVANCED · EXPERIMENTAL · NEEDS DEVICE TEST | Confirm bundle-ID rewriting does not break Keychain, profiles, Top Shelf, or remote setup. |
 | Any supported app | iOS 27 | SideInstaller → SideStore | Primary repo checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL | SideInstaller installs SideStore; it is not itself proof of app refresh reliability. |
 | Any compatible iOS app | iPhone / iPad | LiveContainer + SideStore | Primary docs checked | Not recorded | Not recorded | Not recorded | ADVANCED · NEEDS DEVICE TEST | Check entitlements, extensions, external handoff, refresh shortcut, and container limitations. |
 
@@ -149,3 +155,8 @@ Readers should not be forced to bounce between pages for every step. App guides 
 - FlareStore Apple TV beta guide: <https://flarestore.app/guide/apple-tv/>
 - FlareStore privacy policy: <https://flarestore.app/privacy/>
 - FlareStore terms: <https://flarestore.app/tos/>
+- Debrify canonical repository: <https://github.com/varunsalian/debrify>
+- Debrify releases: <https://github.com/varunsalian/debrify/releases>
+- Debrify release workflow: <https://github.com/varunsalian/debrify/blob/main/.github/workflows/build.yml>
+- Debrify privacy policy: <https://varunsalian.github.io/debrify/privacy.html>
+- Debrify tvOS alpha announcement: <https://www.reddit.com/r/debrify/comments/1vlme2s/debrify_on_apple_tv_first_tvos_build_is_up/>

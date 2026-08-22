@@ -12,6 +12,7 @@ The goal is not merely to list download links. Each guide explains the complete 
 | --- | --- | --- | --- | --- |
 | [Fusion](https://berot3.github.io/ios-tvos-sideloading-guides/guides/fusion/) | AltStore Classic | AltServer + Xcode | EN, DE, ES, FR | Available — unofficial community IPA repository |
 | [Nuvio](https://berot3.github.io/ios-tvos-sideloading-guides/guides/nuvio/) | SideStore / Sideloadly | Unofficial community beta | EN, DE, ES, FR | Available |
+| [Debrify](guides/debrify/SOURCES.md) | Official developer IPA | Official developer tvOS IPA | Planned | Experimental alpha — [device validation required](https://github.com/berot3/ios-tvos-sideloading-guides/issues/11) |
 | More apps | Planned | When supported | Planned | Suggestions welcome |
 
 ## What each guide should include
@@ -64,9 +65,10 @@ Shared layout, navigation, language handling, checklists, warnings, copy control
 ## Roadmap
 
 1. Keep Fusion and Nuvio package links, requirements, and signing behavior current.
-2. Add a searchable guide overview when the library grows.
-3. Add link and accessibility checks to the existing build validation.
-4. Add further iOS and tvOS apps when there is a real documentation gap.
+2. Validate Debrify's official iOS and experimental tvOS packages before publishing a reader-facing guide.
+3. Add a searchable guide overview when the library grows.
+4. Add link and accessibility checks to the existing build validation.
+5. Add further iOS and tvOS apps when there is a real documentation gap.
 
 ## Development and publishing
 
