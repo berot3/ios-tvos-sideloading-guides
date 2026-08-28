@@ -1,6 +1,6 @@
 # Sideloading method validation
 
-Last updated: **22 August 2026**
+Last updated: **28 August 2026**
 
 This document is the durable evidence and device-test record for shared iOS, iPadOS, and tvOS sideloading workflows. The corresponding GitHub issue tracks remaining work. App guides must not promote an untested method as the default merely because the tool claims generic IPA support.
 
@@ -42,7 +42,7 @@ No row is marked **VERIFIED** yet. Existing published guides were source-checked
 | Fusion | Apple TV | Sideloadly | Generic tvOS support only | Not recorded | Not recorded | Not recorded | NEEDS DEVICE TEST | Confirm launch and clarify free manual refresh versus paid tvOS auto-refresh. |
 | Fusion | Apple TV | atvloadly | Primary repo checked | Not recorded | Not recorded | Not recorded | ADVANCED · NEEDS DEVICE TEST | Does bundle-ID rewriting or signing break Fusion iCloud/CloudKit behavior? |
 | Fusion | iOS / tvOS | FlareStore | Provider docs checked | Not recorded | Not recorded | Not recorded | NEEDS DEVICE TEST · PAID | Confirm certificate lifetime, app compatibility, and beta Apple TV flow without treating it as a default. |
-| Nuvio | iPhone / iPad | SideStore + iLoader | Primary + community workflow checked | Not recorded | Not recorded | Not recorded | RESEARCHED | Validate Full source import, slow framework signing, update, data retention, and refresh. |
+| Nuvio | iPhone / iPad | SideStore + iLoader | Official IPA + SideStore docs + community automation checked | Not recorded | Not recorded | Not recorded | RESEARCHED · NEEDS DEVICE TEST | Validate official Full IPA install, update-over-existing, actual expiry extension, data retention, and LocalDevVPN stop automation. |
 | Nuvio | iPhone / iPad | Sideloadly | Primary docs checked | Not recorded | Not recorded | Not recorded | RESEARCHED | Confirm direct Full IPA install, overwrite update, and free daemon refresh. |
 | Nuvio | Apple TV | Sideloadly | Primary + project docs checked | Not recorded | Not recorded | Not recorded | RESEARCHED | Confirm pairing, launch, Top Shelf limitation, and free manual reinstall. |
 | Nuvio | Apple TV | atvloadly | Generic tvOS support only | Not recorded | Not recorded | Not recorded | ADVANCED · NEEDS DEVICE TEST | Confirm the community beta tolerates bundle-ID rewriting and automatic refresh. |
@@ -55,6 +55,18 @@ No row is marked **VERIFIED** yet. Existing published guides were source-checked
 | Debrify | Apple TV | atvloadly | Official tvOS IPA checked; generic tool support only | Not recorded | Not recorded | Not recorded | ADVANCED · EXPERIMENTAL · NEEDS DEVICE TEST | Confirm bundle-ID rewriting does not break Keychain, profiles, Top Shelf, or remote setup. |
 | Any supported app | iOS 27 | SideInstaller → SideStore | Primary repo checked | Not recorded | Not recorded | Not recorded | EXPERIMENTAL | SideInstaller installs SideStore; it is not itself proof of app refresh reliability. |
 | Any compatible iOS app | iPhone / iPad | LiveContainer + SideStore | Primary docs checked | Not recorded | Not recorded | Not recorded | ADVANCED · NEEDS DEVICE TEST | Check entitlements, extensions, external handoff, refresh shortcut, and container limitations. |
+
+### Priority Nuvio SideStore automation test
+
+The 28 August research resolved the documentation question but not device reliability. Record one complete run before removing the **NEEDS DEVICE TEST** label:
+
+1. Install the current official `nuvio-*-full-release.ipa` with SideStore and record its SHA-256.
+2. Shut down the setup computer completely.
+3. Schedule LocalDevVPN connect + `Refresh All Apps`, followed 15–20 minutes later by LocalDevVPN disconnect.
+4. Run while the iPhone or iPad has Wi-Fi/internet access and record whether automation notifications are disabled.
+5. Compare SideStore's provisioning expiry before and after; shortcut completion alone is not a pass.
+6. Confirm Nuvio launches, data remains, and LocalDevVPN actually disconnects.
+7. Repeat once after a restart and once after a relevant iOS/iPadOS or SideStore update.
 
 ## Required research checklist
 
