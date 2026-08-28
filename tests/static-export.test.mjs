@@ -62,16 +62,26 @@ test("shares browser-language detection and explicit preferences across hub and 
 });
 
 test("publishes Nuvio provenance and update distinctions", async () => {
-  const [english, german] = await Promise.all([
+  const [english, german, spanish, french, source] = await Promise.all([
     readExport("guides/nuvio/index.html"),
     readExport("de/guides/nuvio/index.html"),
+    readExport("es/guides/nuvio/index.html"),
+    readExport("fr/guides/nuvio/index.html"),
+    readFile(new URL("../components/NuvioGuide.tsx", import.meta.url), "utf8"),
   ]);
 
-  assert.match(english, /Official source does not mean official binary/);
-  assert.match(english, /Nuvio Full \(Unofficial\)|manifest labels it unofficial/);
+  assert.match(english, /Official iPhone\/iPad IPA/);
+  assert.match(english, /github\.com\/NuvioMedia\/NuvioMobile\/releases/);
+  assert.match(english, /computer.*stay on.*No.*SideStore/i);
+  assert.match(english, /needs a device test/i);
   assert.match(english, /App updates are not signature refreshes/);
-  assert.match(german, /Offizieller Quellcode bedeutet nicht offizielle Binärdatei/);
+  assert.match(german, /Offizielle iPhone-\/iPad-IPA/);
+  assert.match(german, /Computer eingeschaltet bleiben.*Nein.*SideStore/);
   assert.match(german, /App-Updates sind keine Signatur-Refreshes/);
+  assert.match(spanish, /IPA oficial para iPhone\/iPad/);
+  assert.match(french, /IPA officielle sur iPhone\/iPad/);
+  assert.doesNotMatch(source, /Nuvio-v0\.4\.5-Full\.ipa/);
+  assert.doesNotMatch(english, /Add the Nuvio Full source/);
 });
 
 test("publishes Fusion's unofficial repository status prominently", async () => {
