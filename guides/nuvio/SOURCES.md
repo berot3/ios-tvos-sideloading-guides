@@ -1,15 +1,16 @@
 # Nuvio guide verification notes
 
-Last reviewed: **15 August 2026**
+Last reviewed: **28 August 2026**
 
 These notes document the provenance decisions behind the Nuvio guide. They are deliberately more conservative than community shorthand such as “official IPA” or “auto-update”.
 
 ## Publication decision
 
-**PARTIAL / publish with qualification.**
+**PARTIAL / official iOS package; community tvOS package.**
 
 - Nuvio's official mobile source is active and supports iOS/iPadOS.
-- The current practical iOS IPA is published by a separate repository whose manifest explicitly labels it unofficial.
+- Since release 0.4.11, NuvioMedia publishes the unsigned Full IPA and its SHA-256 digest in the official repository.
+- The earlier community `NuvioFull.json` channel stops at 0.4.10 and is retained only as historical provenance, not as the recommended update route.
 - No official NuvioMedia tvOS app exists; the Apple TV workflow uses an independent community beta.
 - AltStore PAL is not a current Nuvio installation route.
 
@@ -18,33 +19,30 @@ These notes document the provenance decisions behind the Nuvio guide. They are d
 - Website: <https://nuvio.tv>
 - Verified GitHub organization: <https://github.com/NuvioMedia>
 - Official mobile source: <https://github.com/NuvioMedia/NuvioMobile>
-- Checked official release: <https://github.com/NuvioMedia/NuvioMobile/releases/tag/0.4.5>
+- Official releases: <https://github.com/NuvioMedia/NuvioMobile/releases>
+- First checked release with official Full IPA: <https://github.com/NuvioMedia/NuvioMobile/releases/tag/0.4.11>
 
-The official 0.4.5 GitHub release, published 12 August 2026, contains Android assets but no iOS IPA. The source tree contains the iOS application and sets an iOS deployment target of 16.1.
+The official 0.4.11 GitHub release, published 26 August 2026, contains `nuvio-0.4.11-full-release.ipa`. GitHub records SHA-256 `712e32aa5957c770a1e6769223769d1b56d0c9f957f369901190637f3cb49114` and size 51,638,510 bytes for that asset. The filename pattern, rather than 0.4.11 itself, is used in the reader guide so it does not become a stale “latest” claim.
 
 The repository named `NuvioMedia/NuvioTV` targets Android TV. Its name is not evidence of an official Apple TV app.
 
 ## iPhone and iPad package
 
-- Community repository: <https://github.com/luqmanfadlli/NuvioMobile-iOS>
-- Checked release: <https://github.com/luqmanfadlli/NuvioMobile-iOS/releases/tag/0.4.5>
-- Full source: <https://raw.githubusercontent.com/luqmanfadlli/NuvioMobile-iOS/main/NuvioFull.json>
-- File: `Nuvio-v0.4.5-Full.ipa`
-- Version/build: `0.4.5` / `109`
-- Date: `2026-08-13T06:10:17Z`
-- Bundle identifier: `com.nuvio.media`
-- Minimum OS: `16.1`
-- SHA-256 recorded during research: `6ecfd8f066d9711b4f1c00953e983f10d58e9f24351a794f150b5d0caa11f0fc`
+- Publisher: <https://github.com/NuvioMedia/NuvioMobile>
+- Release channel: <https://github.com/NuvioMedia/NuvioMobile/releases>
+- Checked file: `nuvio-0.4.11-full-release.ipa`
+- Checked SHA-256: `712e32aa5957c770a1e6769223769d1b56d0c9f957f369901190637f3cb49114`
 
-The manifest says:
+This is an official NuvioMedia release asset, but it is unsigned and must still be re-signed by the user's sideloading tool. “Official IPA” describes provenance; it does not mean App Store signing, Apple review, or immunity from sideloading limitations.
 
-- `Nuvio Full (Unofficial)`
-- developer: `Nuvio Unofficial`
-- Full is built from official source without modifications.
+The `Enhanced` variant is an experimental community fork. Its maintainer's 0.4.11 release states that community Full builds will stop because Full is now officially released by NuvioMedia: <https://github.com/luqmanfadlli/NuvioMobile-Enhanced/releases/tag/0.4.11>.
 
-The first two items are facts about the manifest. The upstream-parity statement is the distributor's claim, not an independent reproducible-build verification. The guide therefore calls this a **community-built Full IPA**, never an official NuvioMedia binary.
+### Retired community Full source
 
-The `Enhanced` variant contains experimental and custom changes and is intentionally excluded from the beginner workflow.
+- Historical manifest: <https://raw.githubusercontent.com/luqmanfadlli/NuvioMobile-iOS/main/NuvioFull.json>
+- Last entry observed: 0.4.10
+
+The Reddit comment supplied by the user recommended adding this manifest to SideStore for convenient version updates. That was useful for the former community distribution, but the manifest is now frozen behind the official release channel. The public guide therefore does not tell new users to add it. It remains documented here so readers understand why older instructions and screenshots mention it.
 
 ## Current iOS availability
 
@@ -52,38 +50,50 @@ User-supplied screenshots from the official Nuvio Discord dated 14 August 2026 s
 
 The official repository README still linked TestFlight during the review. The newer maintainer statement was treated as the current availability source and the README entry as stale.
 
-Because the exact target of the Discord “Download iOS .ipa here” link was not visible, the current community repository is not described as an officially designated distribution channel.
+This historical Discord state was superseded by NuvioMedia's official 0.4.11 IPA release on 26 August 2026.
 
 ## SideStore and iLoader workflow
 
 Primary tool sources:
 
-- SideStore documentation: <https://docs.sidestore.io/>
+- SideStore FAQ: <https://docs.sidestore.io/docs/faq>
+- SideStore prerequisites: <https://docs.sidestore.io/docs/installation/prerequisites>
 - iLoader repository: <https://github.com/nab138/iloader>
 - iLoader website: <https://iloader.app/>
-- Nuvio Full source: <https://raw.githubusercontent.com/luqmanfadlli/NuvioMobile-iOS/main/NuvioFull.json>
+- Official Nuvio releases: <https://github.com/NuvioMedia/NuvioMobile/releases>
 
 iLoader documents support for macOS, Windows and Linux and can install SideStore or SideStore + LiveContainer, import certificate and pairing files, and install an IPA. The iLoader project identifies only its GitHub repository and `iloader.app` as official download locations. Its Homebrew and AUR packages are community maintained.
 
 iLoader lists automatic refreshing of installed apps under **Future Plans**. The guide therefore does not describe iLoader itself as the current ongoing refresh service. It installs and prepares SideStore; SideStore and LocalDevVPN handle the normal on-device refresh workflow.
 
+SideStore's official FAQ says a computer is needed only for installation and SideStore is untethered afterward. Its prerequisites say LocalDevVPN is required whenever installing, updating, or refreshing and specify Wi-Fi. The guide therefore answers the main user question prominently but method-specifically:
+
+- normal SideStore setup: computer required once;
+- later on-device refresh: computer may be fully off;
+- iPhone/iPad still needs Wi-Fi with internet access and LocalDevVPN when the refresh runs;
+- this does not apply to Sideloadly's computer daemon or the Apple TV workflows.
+
 Community workflow evidence:
 
-- <https://www.reddit.com/r/Nuvio/comments/1vdpdpm/the_best_way_to_sideload_nuvio_in_my_opinion/>
-- <https://www.reddit.com/r/Nuvio/comments/1vm372q/sideloaded_ios_nuvio_auto_update/>
+- <https://www.reddit.com/r/Nuvio/comments/1vum8dw/how_to_install_nuvio_fullenhanced_on_ios_with/>
+- <https://www.reddit.com/r/SideStore/comments/1qy943x/sidestore_refresh_automation/>
 
-The first thread documents this practical sequence: install SideStore with iLoader, add the Nuvio Full JSON source, install Full, use LocalDevVPN, and refresh weekly. The second confirms the source URL and the SideStore `Sources` plus-button flow.
+The Nuvio thread documents two scheduled Shortcuts automations: connect LocalDevVPN and run `Refresh All Apps`, then disconnect LocalDevVPN 15–20 minutes later. The discussion also confirms that the computer can remain off after initial SideStore setup. The SideStore thread and user-supplied screenshots report that the VPN-stop automation can fail or wait for automation notifications.
 
-These are community reports, not upstream Nuvio or SideStore documentation. They strengthen the practical recommendation but do not change package provenance.
+These are individual community reports, not an official reliability guarantee. The public guide labels the workflow **optional**, **community**, and **needs a device test**. It recommends running more often than once per week so a failed automation does not consume the full seven-day recovery window.
 
 ### Update wording
 
 The guide distinguishes:
 
-1. **Nuvio version update:** a new version becomes visible through the Full source and the user starts the update in SideStore.
+1. **Nuvio version update:** download a newer official Full IPA and install it over the existing app with SideStore.
 2. **Signature refresh:** SideStore renews the free seven-day development signature using LocalDevVPN.
 
-One Reddit reply says “it auto updates,” while another participant clarifies that their setup uses LiveContainer and that they are not fully sure about App-ID behavior. The safer published statement is that the source avoids manually downloading each new IPA and enables convenient user-initiated updates. Unattended background version updates are not guaranteed.
+The retired community source previously made user-initiated version updates more convenient, but it is frozen at 0.4.10. No official NuvioMedia SideStore/AltStore source was established during this review. Unattended background **version updates** are therefore not promised. SideStore's background **signature refresh** is a separate feature and is never called an app update.
+
+### LocalDevVPN wording
+
+LocalDevVPN supplies the local on-device connection SideStore needs; the guide does not describe it as a conventional remote VPN provider. The optional stop automation can be unreliable. Users are told to disable `Notify When Run` where iOS offers the option, verify the actual expiry date after the first run, and disconnect LocalDevVPN manually if it remains active.
 
 ### Data warning
 
@@ -153,9 +163,10 @@ The reviewed resources are useful but do not provide one current, fully sourced 
 ## Claims intentionally excluded
 
 - Nuvio is currently available through the App Store or TestFlight.
-- The Full IPA or its repository is official NuvioMedia distribution.
-- The Full binary was independently proven reproducible from upstream.
+- The retired `NuvioFull.json` manifest is the current official update channel.
 - SideStore guarantees unattended background Nuvio version updates.
+- A successful-looking Shortcuts run proves the provisioning expiry was extended.
+- The LocalDevVPN stop automation is reliable on every current iOS/iPadOS version.
 - iLoader currently refreshes installed apps automatically.
 - LiveContainer is required for Nuvio.
 - The SideStore/iLoader workflow applies to Apple TV.
