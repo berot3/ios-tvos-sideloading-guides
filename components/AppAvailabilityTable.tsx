@@ -266,11 +266,11 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       .availability-section{border-top:1px solid var(--line);margin-top:46px;padding-top:42px}
       .availability-section>h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.04em;line-height:1.1;margin:8px 0 10px}
       .availability-intro{color:var(--muted);max-width:760px;margin:0 0 20px}
-      .availability-table-shell{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
-      .availability-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.9rem}
+      .availability-table-shell{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+      .availability-table{width:100%;min-width:300px;border-collapse:collapse;table-layout:fixed;font-size:.9rem}
       .availability-app-col{width:36%}
       .availability-table th,.availability-table td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
-      .availability-table thead th{background:var(--soft);font-size:.75rem;letter-spacing:.03em}
+      .availability-table thead th{background:var(--soft);font-size:.75rem;letter-spacing:.03em;line-height:1.15;white-space:normal;overflow-wrap:anywhere}
       .availability-table thead th:first-child,.availability-table tbody th{text-align:left}
       .availability-table tbody th{font-size:.94rem;overflow-wrap:anywhere}
       .availability-table tbody td{font-size:1.05rem;white-space:nowrap}
@@ -285,12 +285,18 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       .availability-sources strong{color:var(--ink)}
       @media(max-width:560px){
         .availability-section{margin-top:36px;padding-top:34px}
-        .availability-app-col{width:40%}
+        .availability-app-col{width:38%}
         .availability-table{font-size:.8rem}
-        .availability-table th,.availability-table td{padding:10px 4px}
+        .availability-table th,.availability-table td{padding:9px 3px}
         .availability-table thead th{font-size:.66rem;letter-spacing:0}
         .availability-table tbody th{font-size:.84rem}
         .availability-table tbody td{font-size:.98rem}
+      }
+      @media(max-width:360px){
+        .availability-table th,.availability-table td{padding:8px 2px}
+        .availability-table thead th{font-size:.62rem}
+        .availability-table tbody th{font-size:.8rem}
+        .availability-table tbody td{font-size:.94rem}
       }
     `}</style>
   </section>;
