@@ -28,7 +28,7 @@ export type AppleAppAvailability = {
   published: boolean;
 };
 
-export const appleAppAvailability = [
+export const appleAppAvailability: readonly AppleAppAvailability[] = [
   {
     id: "strand",
     name: "Strand",
@@ -244,4 +244,4 @@ export const appleAppAvailability = [
     checkedAt: "2026-09-05",
     published: false,
   },
-] as const satisfies readonly AppleAppAvailability[];
+];
