@@ -111,3 +111,59 @@ test("exports discovery files without the former ChatGPT guide URL", async () =>
   assert.match(sitemap, /berot3\.github\.io\/ios-tvos-sideloading-guides/);
   assert.match(robots, /sitemap\.xml/);
 });
+
+test("exports the compact Apple app availability snapshot in every language", async () => {
+  const hubs = await Promise.all([
+    readExport("index.html"),
+    readExport("de/index.html"),
+    readExport("es/index.html"),
+    readExport("fr/index.html"),
+  ]);
+
+  for (const hub of hubs) {
+    assert.match(hub, /Strand/);
+    assert.match(hub, /Couch Streamer/);
+    assert.match(hub, /Debrify/);
+    assert.match(hub, /Ferrite/);
+    assert.match(hub, /Odin/);
+    assert.match(hub, /odinapp\.dev/);
+    assert.match(hub, /📱/);
+    assert.match(hub, /📺/);
+    assert.match(hub, /TestFlight/);
+    assert.match(hub, /IPA/);
+  }
+
+  assert.match(hubs[0], /What can you install right now\?/);
+  assert.match(hubs[1], /Was lässt sich aktuell installieren\?/);
+  assert.match(hubs[2], /¿Qué puedes instalar ahora mismo\?/);
+  assert.match(hubs[3], /Que peut-on installer actuellement \?/);
+  assert.match(hubs[0], /Unconfirmed.*never means.*unavailable/i);
+  assert.match(hubs[1], /„Unbestätigt“ bedeutet niemals „nicht verfügbar“/);
+  assert.match(hubs[0], /platform scope not yet confirmed/i);
+});
+
+test("preserves Ferrite's currently full TestFlight invite and Discord evidence traceability", async () => {
+  const [englishHub, availabilitySource, fusionSources, odinSources] = await Promise.all([
+    readExport("index.html"),
+    readFile(new URL("../lib/appleAppAvailability.ts", import.meta.url), "utf8"),
+    readFile(new URL("../guides/fusion/SOURCES.md", import.meta.url), "utf8"),
+    readFile(new URL("../guides/odin/SOURCES.md", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(englishHub, /testflight\.apple\.com\/join\/YohgCnC4/);
+  assert.match(englishHub, /Public TestFlight beta is full or not accepting new testers/);
+  assert.match(availabilitySource, /id: "ferrite"[\s\S]*?status: "full"[\s\S]*?testflight\.apple\.com\/join\/YohgCnC4/);
+  assert.match(availabilitySource, /issuecomment-5550512510/g);
+  assert.match(fusionSources, /issuecomment-5550512510/);
+  assert.match(odinSources, /issuecomment-5550512510/);
+});
+
+test("keeps the compact availability table resilient at narrow widths", async () => {
+  const componentSource = await readFile(new URL("../components/AppAvailabilityTable.tsx", import.meta.url), "utf8");
+
+  assert.match(componentSource, /overflow-x:auto/);
+  assert.match(componentSource, /min-width:280px/);
+  assert.match(componentSource, /overflow-wrap:anywhere/);
+  assert.match(componentSource, /availability-header-compact/);
+  assert.match(componentSource, /@media\(max-width:360px\)/);
+});

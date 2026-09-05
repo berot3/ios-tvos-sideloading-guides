@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AppAvailabilityTable from "@/components/AppAvailabilityTable";
 import LanguageSwitcher, { type Lang } from "@/components/LanguageSwitcher";
 import { languageHref } from "@/lib/site";
 
@@ -46,6 +47,8 @@ export default function GuideHub({ initialLang, detectLanguage = false }: { init
         <article className="guide-card planned"><div className="badge-row"><span className="badge">{t.planned}</span></div><h3>{t.futureTitle}</h3><p>{t.futureDescription}</p><a className="button-link secondary" href="https://github.com/berot3/ios-tvos-sideloading-guides/issues">{t.suggest}</a></article>
       </div>
     </section>
+
+    <AppAvailabilityTable lang={initialLang} />
 
     <aside className="hub-note"><h2>{t.noIpa}</h2><p>{t.safety}</p></aside>
   </main>;
