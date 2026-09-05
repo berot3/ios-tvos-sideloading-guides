@@ -10,6 +10,8 @@ Primary references and current publication guardrails for Odin.
 
 ## Current first-party evidence
 
+The repository-controlled traceability anchor for the screenshot-only Discord evidence is the [Issue #16 durable evidence record](https://github.com/berot3/ios-tvos-sideloading-guides/issues/16#issuecomment-5550512510).
+
 On 4–5 September 2026, Exate posted in the official Fusion Discord that:
 
 - Odin is the project that comes next after Fusion's App Store appeal failed;
@@ -57,6 +59,7 @@ This is intentionally different from `unconfirmed`: the developer has explicitly
 - If an IPA is published, establish whether it is first-party before adding the ✓ provenance marker.
 - Do not assume Fusion's Apple platform coverage, bundle IDs, data model, or sideload behavior carries over to Odin.
 - Preserve the distinction between a developer roadmap statement and a publicly available build.
+- Keep screenshot-only claims linked to the repository-controlled Issue #16 evidence record when no public Discord permalink exists.
 
 ## Relationship to Fusion
 
