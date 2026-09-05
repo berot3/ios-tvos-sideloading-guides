@@ -273,7 +273,7 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       .availability-section>h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.04em;line-height:1.1;margin:8px 0 10px}
       .availability-intro{color:var(--muted);max-width:760px;margin:0 0 20px}
       .availability-table-shell{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
-      .availability-table{width:100%;min-width:300px;border-collapse:collapse;table-layout:fixed;font-size:.9rem}
+      .availability-table{width:100%;min-width:280px;border-collapse:collapse;table-layout:fixed;font-size:.9rem}
       .availability-app-col{width:36%}
       .availability-table th,.availability-table td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
       .availability-table thead th{background:var(--soft);font-size:.75rem;letter-spacing:.03em;line-height:1.15;white-space:normal;overflow-wrap:anywhere}
