@@ -13,6 +13,7 @@ Primary references used to verify the Fusion installation guide.
 | Source | Used to verify |
 | --- | --- |
 | [Official Fusion website](https://fusionapp.dev/) | Official product identity, supported Apple platforms, addon architecture, and current public product description; the site does not by itself establish current App Store availability |
+| [Issue #16 durable Discord evidence record](https://github.com/berot3/ios-tvos-sideloading-guides/issues/16#issuecomment-5550512510) | Dated repository record of the user-supplied official Fusion Discord screenshots and Exate statements about the failed appeal, future IPA uncertainty, and Odin handoff |
 | [Fusion-AltStore community repository](https://github.com/yodaluca23/Fusion-AltStore) | Community-hosted AltStore source and project assets; repository ownership |
 | [Community-hosted IPA releases](https://github.com/yodaluca23/Fusion-AltStore/releases) | Current iOS and tvOS filenames, checksums, release availability, and uploader identity |
 | [Fusion-AltStore source.json](https://raw.githubusercontent.com/yodaluca23/Fusion-AltStore/refs/heads/main/source.json) | Self-described developer name, app identifiers, minimum OS versions, package metadata, and download URLs |
@@ -21,7 +22,7 @@ Primary references used to verify the Fusion installation guide.
 
 ## Official Discord evidence
 
-The repository currently relies on user-supplied screenshots from the official Fusion Discord for several developer statements that are not publicly archived on the Fusion website.
+The repository currently relies on user-supplied screenshots from the official Fusion Discord for several developer statements that are not publicly archived on the Fusion website. The repository-controlled traceability anchor for those screenshots is the [Issue #16 durable evidence comment](https://github.com/berot3/ios-tvos-sideloading-guides/issues/16#issuecomment-5550512510).
 
 ### 9 August 2026 — community IPA provenance
 
@@ -76,7 +77,7 @@ For current reader-facing status, use the later appeal-result statement rather t
 - Record the review date whenever installation instructions are rechecked.
 - Do not infer a package filename or supported platform from the app name alone.
 - Treat community reports as supplementary evidence, not as a replacement for an upstream source.
-- Direct developer statements in the official project Discord may be used when captured and dated, but should be labelled as screenshot evidence when no public permalink exists.
+- Direct developer statements in the official project Discord may be used when captured and dated, but should be labelled as screenshot evidence when no public permalink exists and linked to a repository-controlled durable evidence record.
 - Update this file when Fusion, Odin, AltStore, AltServer, Xcode, or Apple signing requirements change.
 
 ## Evidence needed to upgrade the IPA classification
