@@ -111,3 +111,31 @@ test("exports discovery files without the former ChatGPT guide URL", async () =>
   assert.match(sitemap, /berot3\.github\.io\/ios-tvos-sideloading-guides/);
   assert.match(robots, /sitemap\.xml/);
 });
+
+test("exports the compact Apple app availability snapshot in every language", async () => {
+  const hubs = await Promise.all([
+    readExport("index.html"),
+    readExport("de/index.html"),
+    readExport("es/index.html"),
+    readExport("fr/index.html"),
+  ]);
+
+  for (const hub of hubs) {
+    assert.match(hub, /Strand/);
+    assert.match(hub, /Couch Streamer/);
+    assert.match(hub, /Debrify/);
+    assert.match(hub, /Ferrite/);
+    assert.match(hub, /📱/);
+    assert.match(hub, /📺/);
+    assert.match(hub, /TestFlight/);
+    assert.match(hub, /IPA/);
+    assert.doesNotMatch(hub, />Odin</);
+  }
+
+  assert.match(hubs[0], /What can you install right now\?/);
+  assert.match(hubs[1], /Was lässt sich aktuell installieren\?/);
+  assert.match(hubs[2], /¿Qué puedes instalar ahora mismo\?/);
+  assert.match(hubs[3], /Que peut-on installer actuellement \?/);
+  assert.match(hubs[0], /Unconfirmed.*never means.*unavailable/i);
+  assert.match(hubs[1], /„Unbestätigt“ bedeutet niemals „nicht verfügbar“/);
+});
