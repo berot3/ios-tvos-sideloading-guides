@@ -28,6 +28,8 @@ export type AppleAppAvailability = {
   published: boolean;
 };
 
+const fusionOdinDiscordEvidence = "https://github.com/berot3/ios-tvos-sideloading-guides/issues/16#issuecomment-5550512510";
+
 export const appleAppAvailability: readonly AppleAppAvailability[] = [
   {
     id: "strand",
@@ -174,8 +176,8 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
     platforms: ["mobile"],
     status: "available",
     testFlight: {
-      status: "no_route",
-      url: "https://github.com/Ferrite-iOS/Ferrite#downloads",
+      status: "full",
+      url: "https://testflight.apple.com/join/YohgCnC4",
     },
     ipa: {
       status: "available",
@@ -184,7 +186,11 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
     },
     sources: [
       {
-        label: "Ferrite README — IPA-only distribution statement",
+        label: "Apple TestFlight invitation — currently not accepting new testers",
+        url: "https://testflight.apple.com/join/YohgCnC4",
+      },
+      {
+        label: "Ferrite README — IPA-only / no future TestFlight plans statement",
         url: "https://github.com/Ferrite-iOS/Ferrite#downloads",
       },
       {
@@ -216,7 +222,8 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
         url: "https://fusionapp.dev/",
       },
       {
-        label: "Official Fusion Discord — Exate: Apple appeal failed; addon-capable Fusion will not return to the App Store; future IPA maintenance is undecided (user-supplied screenshot, 5 Sep 2026)",
+        label: "Official Fusion Discord — durable Issue #16 evidence record for Exate's appeal / IPA-maintenance statements",
+        url: fusionOdinDiscordEvidence,
       },
       {
         label: "Historical Fusion TestFlight discussion",
@@ -249,7 +256,8 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
         url: "https://odinapp.dev/",
       },
       {
-        label: "Official Fusion Discord — Exate: Odin is in final tweaks, built around the user's own library, and will launch on TestFlight first (user-supplied screenshots, 4–5 Sep 2026)",
+        label: "Official Fusion Discord — durable Issue #16 evidence record for Exate's Odin / TestFlight-first statements",
+        url: fusionOdinDiscordEvidence,
       },
     ],
     checkedAt: "2026-09-05",
