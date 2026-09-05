@@ -40,6 +40,7 @@ const copy = {
     ipa: "IPA",
     mobile: "iPhone / iPad",
     tv: "Apple TV / tvOS",
+    platformUnknown: "Platform scope not yet confirmed",
     statusLabels: {
       available: "Publicly available through at least one listed distribution path",
       testing: "Alpha or beta testing",
@@ -60,7 +61,7 @@ const copy = {
     },
     firstParty: "first-party package published by the project or developer",
     legendTitle: "Legend & notes",
-    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS",
+    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS · — platform scope not yet confirmed",
     statusLegend: "Status: ✅ publicly available · 🧪 alpha/beta testing · 🛠️ active development, no public install method yet",
     testFlightLegend: "TestFlight: 🟢 public invite live · 🟠 full / closed to new testers · ◴ previously available · 🟡 unconfirmed · ⚪ not yet available · ⛔ developer says no current route",
     ipaLegend: "IPA: 🟢 available · 🟡 unconfirmed · ⚪ not yet available · ✓ first-party package",
@@ -80,6 +81,7 @@ const copy = {
     ipa: "IPA",
     mobile: "iPhone / iPad",
     tv: "Apple TV / tvOS",
+    platformUnknown: "Plattformumfang noch nicht bestätigt",
     statusLabels: {
       available: "Über mindestens einen aufgeführten Distributionsweg öffentlich verfügbar",
       testing: "Alpha- oder Beta-Test",
@@ -100,7 +102,7 @@ const copy = {
     },
     firstParty: "First-Party-Paket, vom Projekt oder Entwickler veröffentlicht",
     legendTitle: "Legende & Hinweise",
-    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS",
+    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS · — Plattformumfang noch nicht bestätigt",
     statusLegend: "Status: ✅ öffentlich verfügbar · 🧪 Alpha/Beta · 🛠️ aktiv in Entwicklung, noch ohne öffentlichen Installationsweg",
     testFlightLegend: "TestFlight: 🟢 öffentliche Einladung live · 🟠 voll / keine neuen Tester · ◴ früher verfügbar · 🟡 unbestätigt · ⚪ noch nicht verfügbar · ⛔ laut Entwickler aktuell kein TestFlight-Weg",
     ipaLegend: "IPA: 🟢 verfügbar · 🟡 unbestätigt · ⚪ noch nicht verfügbar · ✓ First-Party-Paket",
@@ -120,6 +122,7 @@ const copy = {
     ipa: "IPA",
     mobile: "iPhone / iPad",
     tv: "Apple TV / tvOS",
+    platformUnknown: "Plataformas todavía no confirmadas",
     statusLabels: {
       available: "Disponible públicamente mediante al menos una de las vías indicadas",
       testing: "Pruebas alfa o beta",
@@ -140,7 +143,7 @@ const copy = {
     },
     firstParty: "paquete de primera parte publicado por el proyecto o desarrollador",
     legendTitle: "Leyenda y notas",
-    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS",
+    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS · — plataformas todavía no confirmadas",
     statusLegend: "Estado: ✅ disponible públicamente · 🧪 alfa/beta · 🛠️ en desarrollo activo, todavía sin instalación pública",
     testFlightLegend: "TestFlight: 🟢 invitación pública activa · 🟠 lleno / cerrado a nuevos testers · ◴ disponible anteriormente · 🟡 sin confirmar · ⚪ todavía no disponible · ⛔ el desarrollador indica que no hay vía actual",
     ipaLegend: "IPA: 🟢 disponible · 🟡 sin confirmar · ⚪ todavía no disponible · ✓ paquete de primera parte",
@@ -160,6 +163,7 @@ const copy = {
     ipa: "IPA",
     mobile: "iPhone / iPad",
     tv: "Apple TV / tvOS",
+    platformUnknown: "Plateformes pas encore confirmées",
     statusLabels: {
       available: "Disponible publiquement par au moins une des voies indiquées",
       testing: "Test alpha ou bêta",
@@ -180,7 +184,7 @@ const copy = {
     },
     firstParty: "paquet first-party publié par le projet ou le développeur",
     legendTitle: "Légende et notes",
-    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS",
+    platformLegend: "📱 iPhone / iPad · 📺 Apple TV / tvOS · — plateformes pas encore confirmées",
     statusLegend: "Statut : ✅ disponible publiquement · 🧪 alpha/bêta · 🛠️ en développement actif, sans installation publique pour le moment",
     testFlightLegend: "TestFlight : 🟢 invitation publique active · 🟠 complet / fermé aux nouveaux testeurs · ◴ disponible auparavant · 🟡 non confirmé · ⚪ pas encore disponible · ⛔ le développeur indique qu’il n’existe pas de voie actuelle",
     ipaLegend: "IPA : 🟢 disponible · 🟡 non confirmé · ⚪ pas encore disponible · ✓ paquet first-party",
@@ -191,6 +195,7 @@ const copy = {
 } as const;
 
 function platformSymbols(platforms: readonly ("mobile" | "tv")[]) {
+  if (platforms.length === 0) return "—";
   return [platforms.includes("mobile") ? "📱" : "", platforms.includes("tv") ? "📺" : ""].filter(Boolean).join(" ");
 }
 
@@ -209,7 +214,9 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
         <thead><tr><th>{t.app}</th><th>{t.platform}</th><th>{t.status}</th><th>{t.testFlight}</th><th>{t.ipa}</th></tr></thead>
         <tbody>
           {apps.map((app) => {
-            const platformLabel = app.platforms.map((platform) => platform === "mobile" ? t.mobile : t.tv).join(" + ");
+            const platformLabel = app.platforms.length === 0
+              ? t.platformUnknown
+              : app.platforms.map((platform) => platform === "mobile" ? t.mobile : t.tv).join(" + ");
             const testFlightLabel = t.testFlightLabels[app.testFlight.status];
             const ipaLabel = `${t.ipaLabels[app.ipa.status]}${app.ipa.firstParty ? `; ${t.firstParty}` : ""}`;
             const ipaSymbol = `${IPA_SYMBOLS[app.ipa.status]}${app.ipa.status === "available" && app.ipa.firstParty ? " ✓" : ""}`;
@@ -246,7 +253,10 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       <ul className="availability-sources">
         {apps.map((app) => <li key={app.id}>
           <strong>{app.name}:</strong>{" "}
-          {app.sources.map((source, index) => <span key={source.url}>{index > 0 ? " · " : ""}<a href={source.url}>{source.label}</a></span>)}
+          {app.sources.map((source, index) => <span key={`${source.label}-${index}`}>
+            {index > 0 ? " · " : ""}
+            {source.url ? <a href={source.url}>{source.label}</a> : source.label}
+          </span>)}
           {" · "}{t.checked} <time dateTime={app.checkedAt}>{app.checkedAt}</time>
         </li>)}
       </ul>
