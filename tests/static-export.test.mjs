@@ -162,7 +162,8 @@ test("keeps the compact availability table resilient at narrow widths", async ()
   const componentSource = await readFile(new URL("../components/AppAvailabilityTable.tsx", import.meta.url), "utf8");
 
   assert.match(componentSource, /overflow-x:auto/);
-  assert.match(componentSource, /min-width:300px/);
+  assert.match(componentSource, /min-width:280px/);
   assert.match(componentSource, /overflow-wrap:anywhere/);
+  assert.match(componentSource, /availability-header-compact/);
   assert.match(componentSource, /@media\(max-width:360px\)/);
 });
