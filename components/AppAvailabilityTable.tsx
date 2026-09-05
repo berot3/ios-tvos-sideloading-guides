@@ -34,7 +34,7 @@ const copy = {
     intro: "A compact distribution snapshot for relevant Apple media apps. This is context, not a ranking or recommendation.",
     tableLabel: "Apple app TestFlight and IPA availability",
     app: "App",
-    platform: "📱 / 📺",
+    platform: "📱/📺",
     status: "Status",
     testFlight: "TestFlight",
     ipa: "IPA",
@@ -75,7 +75,7 @@ const copy = {
     intro: "Ein kompakter Distributionsstatus für relevante Apple-Media-Apps. Das ist Kontext, keine Rangliste oder Empfehlung.",
     tableLabel: "TestFlight- und IPA-Verfügbarkeit von Apple-Apps",
     app: "App",
-    platform: "📱 / 📺",
+    platform: "📱/📺",
     status: "Status",
     testFlight: "TestFlight",
     ipa: "IPA",
@@ -116,7 +116,7 @@ const copy = {
     intro: "Un resumen compacto de distribución para apps multimedia relevantes de Apple. Es contexto, no una clasificación ni una recomendación.",
     tableLabel: "Disponibilidad de TestFlight e IPA de apps Apple",
     app: "App",
-    platform: "📱 / 📺",
+    platform: "📱/📺",
     status: "Estado",
     testFlight: "TestFlight",
     ipa: "IPA",
@@ -157,7 +157,7 @@ const copy = {
     intro: "Un aperçu compact de la distribution des apps multimédias Apple pertinentes. Il s’agit de contexte, pas d’un classement ni d’une recommandation.",
     tableLabel: "Disponibilité TestFlight et IPA des apps Apple",
     app: "App",
-    platform: "📱 / 📺",
+    platform: "📱/📺",
     status: "Statut",
     testFlight: "TestFlight",
     ipa: "IPA",
@@ -211,7 +211,13 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
     <div className="availability-table-shell">
       <table className="availability-table" aria-label={t.tableLabel}>
         <colgroup><col className="availability-app-col" /><col /><col /><col /><col /></colgroup>
-        <thead><tr><th>{t.app}</th><th>{t.platform}</th><th>{t.status}</th><th>{t.testFlight}</th><th>{t.ipa}</th></tr></thead>
+        <thead><tr>
+          <th>{t.app}</th>
+          <th>{t.platform}</th>
+          <th>{t.status}</th>
+          <th aria-label={t.testFlight}><span className="availability-header-full">{t.testFlight}</span><span className="availability-header-compact" aria-hidden="true">TF</span></th>
+          <th>{t.ipa}</th>
+        </tr></thead>
         <tbody>
           {apps.map((app) => {
             const platformLabel = app.platforms.length === 0
@@ -276,6 +282,7 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       .availability-table tbody td{font-size:1.05rem;white-space:nowrap}
       .availability-table tbody tr:last-child th,.availability-table tbody tr:last-child td{border-bottom:0}
       .availability-table a{font-weight:800;text-underline-offset:3px}
+      .availability-header-compact{display:none}
       .availability-notes{margin-top:18px;color:var(--muted);font-size:.86rem}
       .availability-notes h3{color:var(--ink);font-size:.95rem;margin:18px 0 6px}
       .availability-notes p{margin:5px 0}
@@ -285,12 +292,14 @@ export default function AppAvailabilityTable({ lang }: { lang: Lang }) {
       .availability-sources strong{color:var(--ink)}
       @media(max-width:560px){
         .availability-section{margin-top:36px;padding-top:34px}
-        .availability-app-col{width:38%}
+        .availability-app-col{width:34%}
         .availability-table{font-size:.8rem}
         .availability-table th,.availability-table td{padding:9px 3px}
         .availability-table thead th{font-size:.66rem;letter-spacing:0}
         .availability-table tbody th{font-size:.84rem}
         .availability-table tbody td{font-size:.98rem}
+        .availability-header-full{display:none}
+        .availability-header-compact{display:inline}
       }
       @media(max-width:360px){
         .availability-table th,.availability-table td{padding:8px 2px}
