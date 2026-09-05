@@ -5,7 +5,7 @@ export type IpaStatus = "available" | "unconfirmed" | "not_yet";
 
 export type AvailabilitySource = {
   label: string;
-  url: string;
+  url?: string;
 };
 
 export type AppleAppAvailability = {
@@ -216,6 +216,9 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
         url: "https://fusionapp.dev/",
       },
       {
+        label: "Official Fusion Discord — Exate: Apple appeal failed; addon-capable Fusion will not return to the App Store; future IPA maintenance is undecided (user-supplied screenshot, 5 Sep 2026)",
+      },
+      {
         label: "Historical Fusion TestFlight discussion",
         url: "https://www.reddit.com/r/FusionTheApp/comments/1ua05t9/test_flight/",
       },
@@ -230,7 +233,7 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
   {
     id: "odin",
     name: "Odin",
-    primaryUrl: "#",
+    primaryUrl: "https://odinapp.dev/",
     platforms: [],
     status: "in_development",
     testFlight: {
@@ -240,8 +243,16 @@ export const appleAppAvailability: readonly AppleAppAvailability[] = [
       status: "not_yet",
       firstParty: false,
     },
-    sources: [],
+    sources: [
+      {
+        label: "Odin official website announced by Exate",
+        url: "https://odinapp.dev/",
+      },
+      {
+        label: "Official Fusion Discord — Exate: Odin is in final tweaks, built around the user's own library, and will launch on TestFlight first (user-supplied screenshots, 4–5 Sep 2026)",
+      },
+    ],
     checkedAt: "2026-09-05",
-    published: false,
+    published: true,
   },
 ];
