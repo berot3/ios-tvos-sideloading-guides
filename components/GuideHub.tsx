@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AppAvailabilityTable from "@/components/AppAvailabilityTable";
 import LanguageSwitcher, { type Lang } from "@/components/LanguageSwitcher";
 import { languageHref } from "@/lib/site";
 
@@ -13,7 +14,7 @@ const hubCopy = {
     eyebrow: "DISPOSITIVOS APPLE · MULTILINGÜE · FUENTES VERIFICADAS", title: <>Guías de sideloading<br />para iPhone, iPad y Apple TV.</>, intro: "Guías prácticas de instalación para iOS, iPadOS y tvOS, con los paquetes correctos, límites de firma, renovaciones y soluciones a problemas frecuentes.", openFusion: "Abrir la guía de Fusion →", source: "Ver el código en GitHub ↗", library: "BIBLIOTECA DE GUÍAS", available: "Guías disponibles y planificadas", fusionDescription: "Instala Fusion con AltStore Classic en el iPhone o con AltServer y Xcode en el Apple TV. Incluye la firma de siete días y soluciones habituales.", nuvioDescription: "Instala Nuvio con SideStore o Sideloadly en iPhone y iPad, además de la beta comunitaria no oficial para Apple TV.", read: "Leer la guía →", planned: "Más guías planificadas", futureTitle: "Más aplicaciones", futureDescription: "Las próximas guías seguirán la misma estructura verificada y podrán incluir AltStore Classic, AltStore PAL, SideStore, AltServer o Xcode cuando sean compatibles.", suggest: "Sugerir una app ↗", noIpa: "Aquí no se alojan archivos IPA", safety: "Cada guía enlaza los proyectos originales y la documentación oficial. Verifica siempre una app y su fuente antes de instalarla.",
   },
   fr: {
-    eyebrow: "APPAREILS APPLE · MULTILINGUE · SOURCES VÉRIFIÉES", title: <>Guides de sideloading<br />pour iPhone, iPad et Apple TV.</>, intro: "Des guides d’installation pratiques pour iOS, iPadOS et tvOS, avec les bons paquets, les limites de signature, le renouvellement et le dépannage au même endroit.", openFusion: "Ouvrir le guide Fusion →", source: "Voir le code sur GitHub ↗", library: "BIBLIOTHÈQUE DE GUIDES", available: "Guides disponibles et prévus", fusionDescription: "Installe Fusion avec AltStore Classic sur iPhone ou avec AltServer et Xcode sur Apple TV. Le guide couvre la signature de sept jours et les problèmes courants.", nuvioDescription: "Installe Nuvio avec SideStore ou Sideloadly sur iPhone et iPad, ainsi que la bêta communautaire non officielle pour Apple TV.", read: "Lire le guide →", planned: "Autres guides prévus", futureTitle: "Autres apps", futureDescription: "Les prochains guides suivront la même structure vérifiée et pourront couvrir AltStore Classic, AltStore PAL, SideStore, AltServer ou Xcode lorsqu’ils sont compatibles.", suggest: "Suggérer une app ↗", noIpa: "Aucun fichier IPA n’est hébergé ici", safety: "Chaque guide renvoie aux projets d’origine et à la documentation officielle. Vérifie toujours une app et sa source avant de l’installer.",
+    eyebrow: "APPAREILS APPLE · MULTILINGUE · SOURCES VÉRIFIÉES", title: <>Guides de sideloading<br />pour iPhone, iPad et Apple TV.</>, intro: "Des guides d’installation pratiques pour iOS, iPadOS et tvOS, avec les bons paquets, les limites de signature, le renouvellement et le dépannage au même endroit.", openFusion: "Ouvrir le guide Fusion →", source: "Voir le code sur GitHub ↗", library: "BIBLIOTHÈQUE DE GUIDES", available: "Guides disponibles et prévus", fusionDescription: "Installe Fusion avec AltStore Classic sur iPhone ou avec AltServer et Xcode sur Apple TV. Le guide couvre la signature de sept jours et les problèmes courants.", nuvioDescription: "Installe Nuvio avec SideStore ou Sideloadly sur iPhone et iPad, ainsi que la bêta communautaire non officielle pour Apple TV.", read: "Lire la guide →", planned: "Autres guides prévus", futureTitle: "Autres apps", futureDescription: "Les prochains guides suivront la même structure vérifiée et pourront couvrir AltStore Classic, AltStore PAL, SideStore, AltServer ou Xcode lorsqu’ils sont compatibles.", suggest: "Suggérer une app ↗", noIpa: "Aucun fichier IPA n’est hébergé ici", safety: "Chaque guide renvoie aux projets d’origine et à la documentation officielle. Vérifie toujours une app et sa source avant de l’installer.",
   },
 } as const;
 
@@ -46,6 +47,8 @@ export default function GuideHub({ initialLang, detectLanguage = false }: { init
         <article className="guide-card planned"><div className="badge-row"><span className="badge">{t.planned}</span></div><h3>{t.futureTitle}</h3><p>{t.futureDescription}</p><a className="button-link secondary" href="https://github.com/berot3/ios-tvos-sideloading-guides/issues">{t.suggest}</a></article>
       </div>
     </section>
+
+    <AppAvailabilityTable lang={initialLang} />
 
     <aside className="hub-note"><h2>{t.noIpa}</h2><p>{t.safety}</p></aside>
   </main>;
